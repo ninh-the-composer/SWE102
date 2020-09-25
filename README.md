@@ -1,4 +1,4 @@
-# Present theo nhóm thứ 2 tuần 8 sau 28/9
+# Present theo nhóm thứ 2 tuần sau 28/9
 
 1.	DS fullname + mssv của Team -> Tên project + mô tả purpose của dự án, lợi ích người dung nhận được
 2.	Đề xuất danh sách main functions tương ứng đề xuất vẽ GUI màn hình(vẽ prototype)
