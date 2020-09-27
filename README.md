@@ -1,6 +1,6 @@
 # Present theo nhóm thứ 2 tuần sau 28/9
 
-1.	DS fullname + mssv của Team -> Tên project + mô tả purpose của dự án, lợi ích người dung nhận được. (Ideas)[https://codebun.com/java-web-project-with-source-code/]
+1.	DS fullname + mssv của Team -> Tên project + mô tả purpose của dự án, lợi ích người dung nhận được. [Ideas](https://codebun.com/java-web-project-with-source-code/)
 2.	Đề xuất danh sách main functions tương ứng đề xuất vẽ GUI [Lucid-Chart](https://www.lucidchart.com/pages/) màn hình(vẽ prototype)
 3.	Những thông tin nhiệm vụ
 	- Business flow
