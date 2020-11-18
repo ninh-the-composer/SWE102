@@ -20,7 +20,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
 		<!-- Site Metas -->
-		<title>Giỏ hàng - Super Star Shop - Shop bán giày vui vẻ ahihi</title>
+		<title>Quán Anh Đeo Kính</title>
 		<meta name="keywords" content="">
 		<meta name="description" content="">
 		<meta name="author" content="">
@@ -101,7 +101,7 @@
 					<div class="col-lg-12">
 						<h2>Giỏ Hàng</h2>
 						<ul class="breadcrumb">
-							<li class="breadcrumb-item"><a href="home">Shop</a></li>
+							<li class="breadcrumb-item"><a href="home">Trang chủ</a></li>
 							<li class="breadcrumb-item active">Giỏ hàng</li>
 						</ul>
 					</div>
