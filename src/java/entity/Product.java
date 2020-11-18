@@ -7,11 +7,10 @@ package entity;
 public class Product {
 	private String id;
 	private String name;
-	private String brand;
+	private String category;
 	private double price;
-	private int unitsInStock;
-	private int orderLevel;
 	private int view;
+	private int orderLevel;
 	private double discount;
 	private String description;
 	private String picture;
@@ -19,20 +18,21 @@ public class Product {
 	public Product() {
 	}
 
-	public Product(String id, String name, String brand, double price, int unitsInStock, int orderLevel, int view, double discount, String description, String picture) {
+	public Product(String id, String name, String category, double price, int view, int orderLevel, double discount, String description, String picture) {
 		this.id = id;
 		this.name = name;
-		this.brand = brand;
+		this.category = category;
 		this.price = price;
-		this.unitsInStock = unitsInStock;
-		this.orderLevel = orderLevel;
 		this.view = view;
+		this.orderLevel = orderLevel;
 		this.discount = discount;
 		this.description = description;
-		this.picture = picture;
+		this.picture = "assets/products/"+category+picture;
 	}
 
-	
+	public int getView() {
+		return view;
+	}
 
 	public String getId() {
 		return id;
@@ -42,8 +42,8 @@ public class Product {
 		return name;
 	}
 
-	public String getBrand() {
-		return brand;
+	public String getCategory() {
+		return category;
 	}
 
 	public double getPrice() {
@@ -53,17 +53,10 @@ public class Product {
 		return price - price*discount/100;
 	}
 
-	public int getUnitsInStock() {
-		return unitsInStock;
-	}
 	
 	public int getOrderLevel() {
 		return orderLevel;
 	}
-
-	public int getView() {
-		return view;
-	}	
 	
 	public double getDiscount() {
 		return discount;
@@ -82,13 +75,13 @@ public class Product {
 	}
 	
 	public String getSummaryDescription(){
-		if(description.isEmpty())
-			return "";
+		if(description.length() < 100)
+			return description;
 		return description.substring(0, 100) + "...";
 	}
 	@Override
 	public String toString() {
-		return brand + " " + name; 
+		return category + " " + name; 
 	}
 	
 }

@@ -18,7 +18,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
 		<!-- Site Metas -->
-		<title>${product.name} Super Star Shop - Shop bán giày vui vẻ ahihi</title>
+		<title>${product.name} Quán Anh Đeo Kính - Shop đồ ăn nhanh</title>
 		<meta name="keywords" content="">
 		<meta name="description" content="">
 		<meta name="author" content="">
@@ -100,7 +100,7 @@
 						<ul class="breadcrumb">
 							<li class="breadcrumb-item"><a href="home">Trang chủ</a></li>
 							<li class="breadcrumb-item"><a href="shop">Sản phẩm</a></li>
-							<li class="breadcrumb-item active">${product.brand} </li>
+							<li class="breadcrumb-item active">${product.category} </li>
 						</ul>
 					</div>
 				</div>
@@ -119,7 +119,7 @@
 						<div class="single-product-details">
 							<h2>${product.name}</h2> 
 							<h5> <del><fmt:formatNumber value="${product.price}"  type="number" pattern="###,###,### VND"/></del><fmt:formatNumber value="${product.priceOut}"  type="number" pattern="###,###,### VND"/></h5>
-							<p class="available-stock"><span> Hơn ${product.unitsInStock} đôi còn hàng / <a href="#">${product.orderLevel} đôi đã bán </a></span>
+							
                             <p>
 							<h4>Về sản phẩm:</h4>
 							<p id="summary">${product.summaryDescription}<span class="show-more" onclick="show()"> xem thêm </span></p>
@@ -137,16 +137,6 @@
 							</script>
 							<ul>
 								<li>
-									<div class="form-group size-st">
-										<label class="size-label">Size</label>
-										<select id="basic" class="selectpicker show-tick form-control">
-											<c:forEach var="size" items="${sizes}">
-												<option value="${size}"><fmt:formatNumber value="${size}"  type="number" pattern="##.#"/></option>
-											</c:forEach>
-										</select>
-									</div>
-								</li>
-								<li>
 									<div class="form-group quantity-box">
 										<label class="control-label">Số lượng</label>
 										<input id="quantity" class="form-control" value="1" min="1" max="10" type="number">
@@ -156,27 +146,26 @@
 
 							<div class="price-box-bar">
 								<div class="cart-and-bay-btn">
-									<button id="add-to-cart" class="btn hvr-hover white-text" onclick="addToCart()" data-fancybox-close="" >Mua ngay</button> 
+									<button id="add-to-cart" class="btn hvr-hover white-text" onclick="addToCart('product?id=${product.id}')" data-fancybox-close="" >Thêm vào giỏ hàng</button> 
+									<button id="add-to-cart" class="btn hvr-hover white-text" onclick="addToCart('cart')" data-fancybox-close="" >Mua ngay</button> 
 
-									<script>
-										function addToCart() {
+
+								</div>
+								<script>
+										function addToCart(goto) {
 											if (${empty sessionScope.user}) {
 												alert("Hold up! Bạn phải đăng nhập trước đã.");
 												location.href = 'login';
 												return;
 											}
-											let size = document.getElementById("basic").value;
 											let quantity = document.getElementById("quantity").value;
-											location.href = 'add?product_id=${product.id}&size=' + size + '&quantity=' + quantity + '&goto=cart';
-
+											location.href = 'add?product_id=${product.id}' + '&quantity=' + quantity + '&goto=' + goto;
 										}
-									</script>
-									<!--<a class="btn hvr-hover" data-fancybox-close="" href="#">Add to cart</a>-->
-								</div>
+								</script>
 							</div>
 
 							<div class="add-to-btn">
-								<div class="add-comp"> 
+								<div class="add-comp">
 									<a class="btn white-text" href="add?product_id=${product.id}&quantity=1&goto=home"><i class="fas fa-cart-plus"></i> Thêm vào giỏ hàng</a>
 								</div>
 								<div class="share-bar">

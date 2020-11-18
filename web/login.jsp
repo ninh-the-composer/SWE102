@@ -18,7 +18,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
 		<!-- Site Metas -->
-		<title>Đăng nhập - Super Star Shop - Shop bán giày vui vẻ ahihi</title>
+		<title>Đăng nhập - Quán Anh Đeo Kính - Shop đồ ăn nhanh</title> 
 		<meta name="keywords" content="">
 		<meta name="description" content="">
 		<meta name="author" content="">

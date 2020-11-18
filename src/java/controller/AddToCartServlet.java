@@ -35,15 +35,15 @@ public class AddToCartServlet extends HttpServlet {
 		String customerId = user.getId();
 		String productId = request.getParameter("product_id");
 		String url = request.getParameter("goto");
-		float size = Float.parseFloat(request.getParameter("size"));
 		int quantity = Integer.parseInt(request.getParameter("quantity"));
+		System.out.println(productId +" " + quantity+ " " +url);
 		CartDAO cartAccess = new CartDAO();
-		ProductInCart p = cartAccess.getProductInCart(customerId, productId, size);
+		ProductInCart p = cartAccess.getProductInCart(customerId, productId);
 		boolean r;
 		if (p != null) {
-			r = cartAccess.updateItem(customerId, productId, size, p.getQuantity() + quantity);
+			r = cartAccess.updateItem(customerId, productId, p.getQuantity() + quantity);
 		} else {
-			r = cartAccess.addToCart(customerId, productId, size, quantity);
+			r = cartAccess.addToCart(customerId, productId, quantity);
 		}
 		if (!r) {
 			request.setAttribute("error", "Cannot add to cart");

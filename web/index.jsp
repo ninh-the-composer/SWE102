@@ -22,7 +22,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Site Metas -->
-    <title>Super Star Shop - Shop bán giày vui vẻ ahihi</title>
+    <title>Quán Anh Đeo Kính - Shop đồ ăn nhanh</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -96,37 +96,37 @@
     <div id="slides-shop" class="cover-slides">
         <ul class="slides-container">
             <li class="text-left">
-                <img src="images/banner-01.jpg" alt="">
+                <img src="assets/background/bg1.jpg" alt="">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <h1 class="m-b-20"><strong>VIETMAX <br>HÀ NỘI VÀ SÀI GÒN</strong></h1>
-                            <p class="m-b-40">Tự hào mang bản sắc dân tộc đi khắp thế giới với bản phối theo phong cách Hà Nội và Sài Gòn cùng VIETMAX</p>
+                            <h1 class="m-b-20"><strong>Ghi sau <br>Ghi sau</strong></h1>
+                            <p class="m-b-40">Ghi sau</p>
                             <p><a class="btn hvr-hover" href="shop">Xem Ngay</a></p>
                         </div>
                     </div>
                 </div>
             </li>
             <li class="text-center">
-                <img src="images/banner-02.jpg" alt="">
+                <img src="assets/background/bg2.jpg" alt="">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <h1 class="m-b-20"><strong>Welcome To <br> Super Star Shop</strong></h1>
-                            <p class="m-b-40">Đây là một sản phẩm của Trịnh Bá Minh Ninh :p</p>
+                            <h1 class="m-b-20"><strong>Welcome To <br> Quán Anh Đeo Kính</strong></h1>
+                            <p class="m-b-40">Đây là một sản phẩm của Nhóm 6</p>
                             <p><a class="btn hvr-hover" href="shop">Xem Ngay</a></p>
                         </div>
                     </div>
                 </div>
             </li>
             <li class="text-right">
-                <img src="images/banner-03.jpg" alt="">
+                <img src="assets/background/bg3.jpg" alt="">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <h1 class="m-b-20"><strong>Chuck Taylor All Star <br>1970S</strong></h1>
+                            <h1 class="m-b-20"><strong>Ghi sau <br>Ghi sau</strong></h1>
                             <p class="m-b-40"><!-- CHUA BIET GHI GI --></p>
-                            <p><a class="btn hvr-hover" href="shop">Xem Ngay</a></p>
+                            <p><a class="btn hvr-hover" href="shop">Ghi sau</a></p>
                         </div>
                     </div>
                 </div>
@@ -148,7 +148,7 @@
                 <div class="col-lg-12">
                     <div class="title-all text-center">
                         <h1>SẢN PHẨM NỔI BẬT</h1>
-                        <p>Hãy để đôi chân bạn có một sải bước tự tin nhất!</p>
+                        <p>Hãy để hương vị làm bạn nhớ mãi khoảnh khắc này.</p>
                     </div>
                 </div>
             </div>
@@ -176,10 +176,8 @@
                                     <ul>
                                         <li><a href="product?id=${product.id}" data-toggle="tooltip" data-placement="right" title="View"><i
                                                     class="fas fa-eye"></i></a></li>
-                                        <!--                                    <li><a href="#" data-toggle="tooltip" data-placement="right"
-																					title="Add to Wishlist"><i class="far fa-heart"></i></a></li>-->
                                     </ul>
-										<a class="cart"href="product?id=${product.id}"> Chi tiết </a>
+										<a class="cart" href="add?product_id=${product.id}&quantity=1&goto=home"> Thêm vào giỏ hàng </a>
                                 </div>
                             </div>
                             <div class="why-text">
@@ -202,38 +200,8 @@
         </div>
     </div>
     <!-- End Products  -->
-
-    <!-- Start Partner  -->
-    <div class="footer-partner">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-8 offset-sm-2 text-center colorlib-heading colorlib-heading-sm">
-                    <h2>Trusted Partners</h2>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col partner-col text-center">
-                    <img src="./images/brand-1.jpg" class="img-fluid" alt="adidas">
-                </div>
-                <div class="col partner-col text-center">
-                    <img src="./images/brand-2.jpg" class="img-fluid" alt="nike">
-                </div>
-                <div class="col partner-col text-center">
-                    <img src="./images/brand-3.jpg" class="img-fluid" alt="gucci">
-                </div>
-                <div class="col partner-col text-center">
-                    <img src="./images/brand-4.jpg" class="img-fluid" alt="merrell">
-                </div>
-                <div class="col partner-col text-center">
-                    <img src="./images/brand-5.jpg" class="img-fluid" alt="puma">
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End Blog  -->
-
-
-
+	
+	<jsp:include page="instagram-feed.jsp"/>	
 
     <jsp:include page="footer.jsp" />
 

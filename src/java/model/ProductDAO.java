@@ -30,12 +30,12 @@ public class ProductDAO {
 		}
 	}
 	/**
-	 * Count number of records by brand id.
-	 * @param brandId filter by specific brand id. otherwise leave it blank
+	 * Count number of records by category id.
+	 * @param categoryId filter by specific category id. otherwise leave it blank
 	 * @return number of records
 	 */
-	public int getCount(String brandId) {
-		String sql = "select COUNT(p.id) [r] from Products p inner join Brands b on p.brand_id = b.id where b.id like '%"+brandId+"%'";
+	public int getCountByCategory(String categoryId) {
+		String sql = "select COUNT(p.id) [r] from Product p inner join Category b on p.category_id = b.id where b.id like '%"+categoryId+"%'";
 		int r = 0;
 		try {
 			Connection con = dbc.getConnection();
@@ -53,7 +53,7 @@ public class ProductDAO {
 	
 	public int getCountSearchResult(String keyword) {
 		String sql = "select count(*) as r\n"
-				+ "from Products p inner join Brands b on p.brand_id = b.id \n"
+				+ "from Product p inner join Category b on p.category_id = b.id \n"
 				+ "where (b.name +' ' +p.name) like '%" + keyword + "%'";
 		int r = 0;
 		try {
@@ -72,7 +72,7 @@ public class ProductDAO {
 	
 	public Product getProductById(String id){
 		Product product = null;
-		String sql = "select p.*, b.name [brand_name] from Products p inner join Brands b on p.brand_id = b.id where p.id = ? ";
+		String sql = "select p.*, b.name [category_name] from Product p inner join Category b on p.category_id = b.id where p.id = ? ";
 		try {
 			Connection con = dbc.getConnection();
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -81,16 +81,15 @@ public class ProductDAO {
 			if (rs.next()) {
 				String productId = rs.getString("id");
 				String name = rs.getString("name");
-				String brand = rs.getString("brand_name");
+				String category = rs.getString("category_name");
 				double price = rs.getDouble("price");
-				int unitsInStock = rs.getInt("units_in_stock");
 				int orderLevel = rs.getInt("order_level");
 				int view = rs.getInt("view");
 				double discount = rs.getDouble("discount");
 				String description = rs.getString("description");
 				String picture = rs.getString("picture");
-				product = new Product(id, name, brand, price, unitsInStock, orderLevel, view++, discount, description, picture);
-				String updateSql = "update Products set [view] = ? where id = ?";
+				product = new Product(id, name, category, price, orderLevel, view++, discount, description, picture);
+				String updateSql = "update Product set [view] = ? where id = ?";
 				ps = con.prepareStatement(updateSql);
 				ps.setInt(1, view);
 				ps.setString(2, productId);
@@ -107,9 +106,9 @@ public class ProductDAO {
 	
 	/**
 	 * Get arraylist of product for a page by start and end index.<br/>
-	 * <strong>Filter by brand:</strong>
+	 * <strong>Filter by category:</strong>
 	 * <ul>
-	 *	<li><b>validated Brand ID</li>
+	 *	<li><b>validated Category ID</li>
 	 *	<li><b>Get all - leave it blank</li>
 	 * </ul>
 	 * <strong>Sort Mode:</strong>
@@ -122,14 +121,14 @@ public class ProductDAO {
 	 * @param page index of page(1,2,3...)
 	 * @param productsAPage number of products will return 
 	 * @param sortMode described above <strong>validated</strong>
-	 * @param brand filter by brand  <strong>validated</strong>
+	 * @param category filter by category  <strong>validated</strong>
 	 * @return 
 	 */
-	public List<Product> getProducts(int page, int productsAPage, String brandId, String sortMode) {
+	public List<Product> getProducts(int page, int productsAPage, String categoryId, String sortMode) {
 		int start = (page-1)*productsAPage;
 		List<Product> list = new ArrayList<>();
-		String sql = "select  p.*, b.name [brand_name] from Products p inner join Brands b on p.brand_id = b.id  \n"
-				+ "where b.id like '%" + brandId + "%'\n"
+		String sql = "select  p.*, b.name [category_name] from Product p inner join Category b on p.category_id = b.id  \n"
+				+ "where b.id like '%" + categoryId + "%'\n"
 				+ getQueryOrderBySortMode(sortMode) + "\n"
 				+ "offset ? rows\n"
 				+ "fetch next ? rows only";
@@ -143,15 +142,14 @@ public class ProductDAO {
 			while (rs.next()) {
 				String id = rs.getString("id");
 				String name = rs.getString("name");
-				String brand = rs.getString("brand_name");
+				String category = rs.getString("category_name");
 				double price = rs.getDouble("price");
-				int unitsInStock = rs.getInt("units_in_stock");
 				int orderLevel = rs.getInt("order_level");
 				int view = rs.getInt("view");
 				double discount = rs.getDouble("discount");
 				String description = rs.getString("description");
 				String picture = rs.getString("picture");
-				Product p = new Product(id, name, brand, price, unitsInStock, orderLevel, view, discount, description, picture);
+				Product p = new Product(id, name, category, price, orderLevel, view, discount, description, picture);
 				list.add(p);
 			}
 			rs.close();
@@ -164,35 +162,12 @@ public class ProductDAO {
 		return list;
 	}
 	
-	public List<Float> getSizesById(String id){
-		List<Float> list = new ArrayList<>();
-		String sql = "select * from Sizes where shoe_id = ?";
-		try {
-			Connection con = dbc.getConnection();
-			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setString(1, id);
-			ResultSet rs = ps.executeQuery();
-			while (rs.next()) {
-				if (rs.getFloat("units_in_stock") > 0) {
-					Float size = rs.getFloat("size");
-					list.add(size);
-				}
-			}
-			rs.close();
-			ps.close();
-			con.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-			list = null;
-		}
-		return list;
-	}
 
 	public List<Product> searchByKeyword(String keyword, int page, int productsAPage, String sortMode){
 		List<Product> list = new ArrayList<>();
 		int start = (page-1)*productsAPage;
-		String sql = "select  p.*, b.name [brand_name] \n"
-				+ "from Products p inner join Brands b on p.brand_id = b.id \n"
+		String sql = "select  p.*, b.name [category_name] \n"
+				+ "from Product p inner join Category b on p.category_id = b.id \n"
 				+ "where (b.name +' ' +p.name) like '%"+keyword+"%' \n"
 				+ getQueryOrderBySortMode(sortMode)+"\n"
 				+ "offset ? rows\n"
@@ -206,15 +181,14 @@ public class ProductDAO {
 			while(rs.next()){
 				String id = rs.getString("id");
 				String name = rs.getString("name");
-				String brand = rs.getString("brand_name");
+				String category = rs.getString("category_name");
 				double price = rs.getDouble("price");
-				int unitsInStock = rs.getInt("units_in_stock");
 				int orderLevel = rs.getInt("order_level");
 				int view = rs.getInt("view");
 				double discount = rs.getDouble("discount");
 				String description = rs.getString("description");
 				String picture = rs.getString("picture");
-				Product p = new Product(id, name, brand, price, unitsInStock, orderLevel, view, discount, description, picture);
+				Product p = new Product(id, name, category, price, orderLevel, view, discount, description, picture);
 				list.add(p);
 			}
 		} catch (Exception e) {

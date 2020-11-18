@@ -19,7 +19,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
 		<!-- Site Metas -->
-		<title>Thanh toán - Super Star Shop - Shop bán giày vui vẻ ahihi</title>
+		<title>Quán Anh Đeo Kính - Shop đồ ăn nhanh</title>
 		<meta name="keywords" content="">
 		<meta name="description" content="">
 		<meta name="author" content="">
@@ -181,7 +181,7 @@
 										<c:forEach var="product" items="${productsInCart}">
 											<div class="media mb-2 border-bottom">
 												<div class="media-body"> <a href="product?id=${product.id}"> ${product}</a>
-													<div class="small text-muted">Size: <fmt:formatNumber value="${product.size}"  type="number" pattern="##.#"/><span class="mx-2">|</span>Giá: <fmt:formatNumber value="${product.priceOut}"  type="number" pattern="###,###,### VND"/> <span class="mx-2">|</span> SL:
+													<div class="small text-muted">Giá: <fmt:formatNumber value="${product.priceOut}"  type="number" pattern="###,###,### VND"/> <span class="mx-2">|</span> SL:
 														${product.quantity} <span class="mx-2">|</span> Thành tiền: <fmt:formatNumber value="${product.priceOut * product.quantity}"  type="number" pattern="###,###,### VND"/></div>
 												</div>
 											</div>

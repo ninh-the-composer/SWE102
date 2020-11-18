@@ -20,7 +20,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Site Metas -->
-    <title>Tìm kiếm: ${param.q} - Super Star Shop - Shop bán giày vui vẻ ahihi</title>
+    <title>Tìm kiếm: ${param.q} - Quán Anh Đeo Kính - Shop đồ ăn nhanh</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -151,7 +151,6 @@
                         </div>
                         <div class="row product-categorie-box">
 							<c:if test="${not empty requestScope.products}">
-
 								<div class="tab-content">
 									<div role="tabpanel" class="tab-pane fade show active" id="grid-view">
 										<div class="row">
@@ -165,15 +164,15 @@
 
                                                         <img src="${product.picture}" class="img-fluid show-product"
                                                             alt="Image">
-                                                        <div class="mask-icon">
+<!--                                                        <div class="mask-icon">
                                                             <ul>
                                                                 <li><a href="#" data-toggle="tooltip"
                                                                         data-placement="right" title="View"><i
                                                                             class="fas fa-eye"></i></a></li>
-                                                                <!--<li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>-->
+                                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
                                                             </ul>
                                                             <a class="cart" href="product?id=${product.id}">Chi tiết</a>
-                                                        </div>
+                                                        </div>-->
                                                     </div>
                                                     <div class="why-text">
                                                         <a href="product?id=${product.id}">

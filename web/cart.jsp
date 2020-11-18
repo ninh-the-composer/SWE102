@@ -20,7 +20,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
 		<!-- Site Metas -->
-		<title>Quán Anh Đeo Kính</title>
+		<title>Quán Anh Đeo Kính - Shop đồ ăn nhanh</title>
 		<meta name="keywords" content="">
 		<meta name="description" content="">
 		<meta name="author" content="">
@@ -129,7 +129,7 @@
 								</thead>
 								<tbody>
 								<script>
-									function updateCart(productId, quantity, size) {
+									function updateCart(productId, quantity) {
 										if (quantity <= 0) {
 											location.href = 'remove?product_id=' + productId +  '&goto=cart';
 										} else {
@@ -154,7 +154,7 @@
 										<td class="price-pr">
 											<p><fmt:formatNumber value="${product.priceOut}"  type="number" pattern="###,###,### VND"/></p>
 										</td>
-										<td class="quantity-box"><input type="number" onchange="updateCart(${product.id}, this.value, ${product.size})" size="4" value="${product.quantity}" min="0" step="1" class="c-input-text qty text"></td>
+										<td class="quantity-box"><input type="number" onchange="updateCart(${product.id}, this.value)" size="4" value="${product.quantity}" min="0" step="1" class="c-input-text qty text"></td>
 										<td class="total-pr">
 											<p id="priceOut"><fmt:formatNumber value="${product.priceOut * product.quantity}"  type="number" pattern="###,###,### VND"/></p> 
 										</td>
@@ -186,7 +186,7 @@
 											tag.style.borderColor = "red";
 											tag.value = "";
 											return;
-										} 
+										}
 										document.getElementById("error").innerHTML="";
 										tag.style.borderColor = "green";
 									}

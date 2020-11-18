@@ -18,7 +18,7 @@ public class CustomerDAO {
 	DBContext dbc = new DBContext();
 	public Customer getAccount(String username, String password){
 		Customer c = null;
-		String sql = "select * from Customers c inner join Account a on c.id = a.customer_id where a.username = ? and a.password = ?";
+		String sql = "select * from Customer c inner join Account a on c.id = a.customer_id where a.username = ? and a.password = ?";
 		try {
 			Connection con = dbc.getConnection();
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -45,7 +45,7 @@ public class CustomerDAO {
 	}
 	public boolean addCustomer(Customer c) {
 		int r = 0;
-		String sql = "insert into Customers values(?,?,?,?,?,?)\n"
+		String sql = "insert into Customer values(?,?,?,?,?,?)\n"
 				+ "insert into Account values(?,?,(select top 1 id from Customers order by id desc))";
 		try {
 			Connection con = dbc.getConnection();
@@ -89,7 +89,7 @@ public class CustomerDAO {
 	}
 	public boolean hasExistedEmail(String email){
 		int r = 0;
-		String sql = "select email from Customers where email = ?";
+		String sql = "select email from Customer where email = ?";
 		try {
 			Connection con = dbc.getConnection();
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -135,6 +135,6 @@ public class CustomerDAO {
 	public static void main(String[] args) {
 		CustomerDAO dao = new CustomerDAO();
 		Customer c = new Customer("", "Ninh Trinh Ba Minh", "nguu", "123", "vietnam", "hanoi", "+84369543469", "adzekk01@gmail.com", "");
-		System.out.println(dao.hasExistedUsername("ngu"));
+		System.out.println(dao.hasExistedUsername("ninh"));
 	}
 }

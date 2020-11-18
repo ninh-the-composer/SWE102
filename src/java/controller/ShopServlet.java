@@ -27,12 +27,12 @@ public class ShopServlet extends HttpServlet {
 	 */
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		BrandDAO brandAccess = new BrandDAO();
+		CategoryDAO brandAccess = new CategoryDAO();
 		ProductDAO productAccess = new ProductDAO();
 		
 		//get brand id
-		String brandId = request.getParameter("brand");
-		brandId = brandId == null ? "" : brandId;
+		String categoryId = request.getParameter("category");
+		categoryId = categoryId == null ? "" : categoryId;
 		
 		//get sort mode
 		String sortMode = request.getParameter("sortby");
@@ -41,17 +41,17 @@ public class ShopServlet extends HttpServlet {
 		//get number of page
 		int productsAPage = 9;
 		List<Integer> listPage = new ArrayList<>();
-		for(int i = 1, j = 0; j < productAccess.getCount(brandId); i++, j+=productsAPage){
+		for(int i = 1, j = 0; j < productAccess.getCountByCategory(categoryId); i++, j+=productsAPage){
 			listPage.add(i);
 		}
 		String rPage = request.getParameter("page");
 		int page = rPage == null ? 1 : Integer.parseInt(rPage);
 		
 		
-		List<Brand> brandData = brandAccess.getBrands();
-		List<Product> productData = productAccess.getProducts(page, productsAPage, brandId, sortMode);
+		List<Category> brandData = brandAccess.getCategories();
+		List<Product> productData = productAccess.getProducts(page, productsAPage, categoryId, sortMode);
 		request.setAttribute("pages", listPage);
-		request.setAttribute("brands", brandData);
+		request.setAttribute("categories", brandData);
 		request.setAttribute("products", productData);
 		request.getRequestDispatcher("shop.jsp").forward(request, response);
 		

@@ -18,7 +18,7 @@ public class OrderDAO {
 	public List<Order> getOrderedByUserId(String customer_id) {
 		List<Order> data = new ArrayList<>();
 		String sql = "select o.id, o.customer_id, cast(o.order_date as date) [order_date], o.city, o.address, o.phone, o.email, o.note ,sum(od.unit_price*od.quantity) [value] \n" +
-"				from Orders o inner join [Order Details] od on o.id = od.order_id \n" +
+"				from [Order] o inner join [Order Details] od on o.id = od.order_id \n" +
 "				where o.customer_id = ? \n" +
 "				group by o.id, o.customer_id, o.order_date, o.city, o.address, o.phone, o.email, o.note ";
 		try {

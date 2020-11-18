@@ -33,9 +33,8 @@ public class RemoveItemCart extends HttpServlet {
 		String customerId = user.getId();
 		String productId = request.getParameter("product_id");
 		String url = request.getParameter("goto");
-		float size = Float.parseFloat(request.getParameter("size"));
 		CartDAO cartAccess = new CartDAO();
-		boolean r = cartAccess.removeItem(customerId, productId, size);
+		boolean r = cartAccess.removeItem(customerId, productId);
 		if(!r){
 			request.setAttribute("error", "Cannot remove to cart");
 		}

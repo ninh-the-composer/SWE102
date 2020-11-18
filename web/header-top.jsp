@@ -8,28 +8,16 @@
 					<div id="offer-box" class="carouselTicker">
 						<ul class="offer-box">
 							<li>
-								<i class="fab fa-opencart"></i> Off 10%! Shop Now Man
+								<i class="fab fa-opencart"></i> Khuyến mãi mua 1 tặng 1
 							</li>
 							<li>
-								<i class="fab fa-opencart"></i> 50% - 80% off on Fashion
+								<i class="fab fa-opencart"></i> Tặng 1 nước khi mua theo combo
 							</li>
 							<li>
-								<i class="fab fa-opencart"></i> 20% off Entire Purchase Promo code: offT20
+								<i class="fab fa-opencart"></i> Nhận ngay voucher khi mua đơn hàng trên 200k
 							</li>
 							<li>
-								<i class="fab fa-opencart"></i> Off 50%! Shop Now
-							</li>
-							<li>
-								<i class="fab fa-opencart"></i> Off 10%! Shop Now Man
-							</li>
-							<li>
-								<i class="fab fa-opencart"></i> 50% - 80% off on Fashion
-							</li>
-							<li>
-								<i class="fab fa-opencart"></i> 20% off Entire Purchase Promo code: offT20
-							</li>
-							<li>
-								<i class="fab fa-opencart"></i> Off 50%! Shop Now
+								<i class="fab fa-opencart"></i> Đăng ký thẻ thành viên để nhận được các ưu đãi đặc biệt
 							</li>
 						</ul>
 					</div>
@@ -37,7 +25,7 @@
 			</div>
 			<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 				<div class="right-phone-box">
-					<p>Call US :<a href="tel:+84369543469"> +84 369 543 469</a></p>
+					<p>Số Điện thoại :<a href="tel:+84369543469"> +84 369 543 469</a></p>
 				</div>
 				<div class="our-link">
 					<ul>

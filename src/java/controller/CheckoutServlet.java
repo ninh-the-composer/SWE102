@@ -37,12 +37,12 @@ public class CheckoutServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		String note = request.getParameter("note");
 		String voucher = "";
-		boolean r = cartAccess.order(data, user.getId(), address, city, phone, email ,note, voucher);
+		boolean r = cartAccess.order(data, user.getId(), address, city, phone, email ,note);
 		String url;
 		if(r){
 			url = "thanks.jsp";
 			for (ProductInCart p : data) {
-				cartAccess.removeItem(user.getId(), p.getId(), p.getSize());
+				cartAccess.removeItem(user.getId(), p.getId());
 			}
 		} else {
 			url = "checkout.jsp";

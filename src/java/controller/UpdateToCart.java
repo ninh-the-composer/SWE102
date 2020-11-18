@@ -32,10 +32,9 @@ public class UpdateToCart extends HttpServlet {
 		}
 		String customerId = user.getId();
 		String productId = request.getParameter("product_id");
-		float size = Float.parseFloat(request.getParameter("size"));
 		int quantity = Integer.parseInt(request.getParameter("quantity"));
 		CartDAO cartAccess = new CartDAO();
-		boolean r = cartAccess.updateItem(customerId, productId, size, quantity);
+		boolean r = cartAccess.updateItem(customerId, productId, quantity);
 		String url = "cart";
 		if(!r){
 			request.setAttribute("error", "Cannot update to cart");

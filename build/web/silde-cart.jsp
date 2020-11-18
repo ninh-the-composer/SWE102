@@ -23,14 +23,14 @@
 	<li class="cart-box">
 		<ul class="cart-list">
 			<script>
-				function removeItem(productId, size){
-					location.href='remove?product_id=' + productId + '&size=' + size + '&goto=cart';
+				function removeItem(productId){
+					location.href='remove?product_id=' + productId + '&goto=cart';
 				}
 			</script>
 			<c:set var="total" scope="request" value="${0}"/> 
 			<c:forEach var="product" items="${productsInCart}">		
 				<li>
-					<a href="#" onclick="removeItem(${product.id}, ${product.size})" class="close-side" style="color: black"  ><i class="fa fa-times" ></i></a>
+					<a href="#" onclick="removeItem(${product.id})" class="close-side" style="color: black"  ><i class="fa fa-times" ></i></a>
 					<a href="product?id=${product.id}" class="photo"><img src="${product.picture}" class="cart-thumb" alt="" /></a>
 					<h6><a href="product?id=${product.id}">${product.name} </a></h6>
 					<p>${product.quantity}x - <span class="price"><fmt:formatNumber value="${product.priceOut}"  type="number" pattern="###,###,### VND"/></span></p>
