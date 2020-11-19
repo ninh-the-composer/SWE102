@@ -72,7 +72,7 @@ public class ProductDAO {
 	
 	public Product getProductById(String id){
 		Product product = null;
-		String sql = "select p.*, b.name [category_name] from Product p inner join Category b on p.category_id = b.id where p.id = ? ";
+		String sql = "select p.*, b.name [category_name], b.id [category_id] from Product p inner join Category b on p.category_id = b.id where p.id = ? ";
 		try {
 			Connection con = dbc.getConnection();
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -81,7 +81,9 @@ public class ProductDAO {
 			if (rs.next()) {
 				String productId = rs.getString("id");
 				String name = rs.getString("name");
-				String category = rs.getString("category_name");
+				String categoryId = rs.getString("category_id");
+				String categoryName = rs.getString("category_name");
+				Category category = new Category(categoryId, categoryName);
 				double price = rs.getDouble("price");
 				int orderLevel = rs.getInt("order_level");
 				int view = rs.getInt("view");
@@ -127,7 +129,7 @@ public class ProductDAO {
 	public List<Product> getProducts(int page, int productsAPage, String categoryId, String sortMode) {
 		int start = (page-1)*productsAPage;
 		List<Product> list = new ArrayList<>();
-		String sql = "select  p.*, b.name [category_name] from Product p inner join Category b on p.category_id = b.id  \n"
+		String sql = "select  p.*, b.name [category_name], b.id [category_id] from Product p inner join Category b on p.category_id = b.id  \n"
 				+ "where b.id like '%" + categoryId + "%'\n"
 				+ getQueryOrderBySortMode(sortMode) + "\n"
 				+ "offset ? rows\n"
@@ -142,7 +144,8 @@ public class ProductDAO {
 			while (rs.next()) {
 				String id = rs.getString("id");
 				String name = rs.getString("name");
-				String category = rs.getString("category_name");
+				String categoryName = rs.getString("category_name");
+				Category category = new Category(categoryId, categoryName);
 				double price = rs.getDouble("price");
 				int orderLevel = rs.getInt("order_level");
 				int view = rs.getInt("view");
@@ -166,7 +169,7 @@ public class ProductDAO {
 	public List<Product> searchByKeyword(String keyword, int page, int productsAPage, String sortMode){
 		List<Product> list = new ArrayList<>();
 		int start = (page-1)*productsAPage;
-		String sql = "select  p.*, b.name [category_name] \n"
+		String sql = "select  p.*, b.name [category_name], b.id [category_id] \n"
 				+ "from Product p inner join Category b on p.category_id = b.id \n"
 				+ "where (b.name +' ' +p.name) like '%"+keyword+"%' \n"
 				+ getQueryOrderBySortMode(sortMode)+"\n"
@@ -181,7 +184,9 @@ public class ProductDAO {
 			while(rs.next()){
 				String id = rs.getString("id");
 				String name = rs.getString("name");
-				String category = rs.getString("category_name");
+				String categoryId = rs.getString("category_id");
+				String categoryName = rs.getString("category_name");
+				Category category = new Category(categoryId, categoryName);
 				double price = rs.getDouble("price");
 				int orderLevel = rs.getInt("order_level");
 				int view = rs.getInt("view");
@@ -195,6 +200,21 @@ public class ProductDAO {
 		}
 		return list;
 	}
+	
+//	public boolean addProduct(Product p){
+//		String sql = "insert into Product values('Test Drink', 3, 14000, 0, 'UONG NHU LOZ', '/drink14/pepsi_m.png', 0,0)";
+//		int r = 0;
+//		try {
+//			Connection con = dbc.getConnection();
+//			PreparedStatement ps = con.prepareStatement(sql);
+//			ps.setString(1, p.getName());
+//			r = ps.executeUpdate();
+//		} catch (Exception e) {
+//			System.out.println("Bug in ProductDAO");
+//			e.printStackTrace();
+//		}
+//		return r != 0;
+//	}
 	
 	public static void main(String[] args) {
 		ProductDAO dao = new ProductDAO();

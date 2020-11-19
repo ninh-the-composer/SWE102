@@ -7,7 +7,7 @@ package entity;
 public class Product {
 	private String id;
 	private String name;
-	private String category;
+	private Category category;
 	private double price;
 	private int view;
 	private int orderLevel;
@@ -18,7 +18,7 @@ public class Product {
 	public Product() {
 	}
 
-	public Product(String id, String name, String category, double price, int view, int orderLevel, double discount, String description, String picture) {
+	public Product(String id, String name, Category category, double price, int view, int orderLevel, double discount, String description, String picture) {
 		this.id = id;
 		this.name = name;
 		this.category = category;
@@ -42,7 +42,7 @@ public class Product {
 		return name;
 	}
 
-	public String getCategory() {
+	public Category getCategory() {
 		return category;
 	}
 
