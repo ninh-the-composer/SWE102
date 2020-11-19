@@ -15,7 +15,8 @@ public class Customer {
 	private String phone;
 	private String email;
 	private String picture;
-
+	private int roleId;
+	
 	public Customer() {
 	}
 
@@ -29,6 +30,19 @@ public class Customer {
 		this.phone = phone;
 		this.email = email;
 		this.picture = picture;
+	}
+
+	public Customer(String id, String name, String username, String password, String address, String city, String phone, String email, String picture, int roleId) {
+		this.id = id;
+		this.name = name;
+		this.username = username;
+		this.password = password;
+		this.address = address;
+		this.city = city;
+		this.phone = phone;
+		this.email = email;
+		this.picture = picture;
+		this.roleId = roleId;
 	}
 
 	public String getId() {
@@ -66,6 +80,11 @@ public class Customer {
 	public String getPicture() {
 		return picture;
 	}
+
+	public int getRoleId() {
+		return roleId;
+	}
+	
 
 	@Override
 	public String toString() {

@@ -33,7 +33,8 @@ public class CustomerDAO {
 				String phone = rs.getString("phone");
 				String email = rs.getString("email");
 				String picture = rs.getString("picture");
-				c = new Customer(id, name, username, password, address, city, phone, email, picture);
+				int roleId = rs.getInt("role_id");
+				c = new Customer(id, name, username, password, address, city, phone, email, picture, roleId);
 			}
 			ps.close();
 			con.close();

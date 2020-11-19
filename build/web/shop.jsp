@@ -192,7 +192,7 @@
 														</div>
 														<div class="why-text">
 															<a href="product?id=${product.id}">
-																<h4>${product}</h4>
+																<h4>${product.name}</h4>
 															</a>
 															<h5><fmt:formatNumber value="${product.priceOut}"  type="number" pattern="###,###,### VND"/></h5>
 														</div>

@@ -1,6 +1,5 @@
 package model;
 
-import entity.Category;
 import entity.Product;
 import entity.ProductInCart;
 import java.sql.Connection;
@@ -20,7 +19,7 @@ public class CartDAO {
 
 	public List<ProductInCart> getProductsInCart(String customerId) {
 		List<ProductInCart> data = new ArrayList<>();
-		String sql = "select * , b.name [category_name], b.id [category_id] from Cart c inner join Product p on c.product_id = p.id inner join Category b on b.id = p.category_id where customer_id = ?";
+		String sql = "select * , b.name [category_name] from Cart c inner join Product p on c.product_id = p.id inner join Category b on b.id = p.category_id where customer_id = ?";
 		try {
 			Connection con = dbc.getConnection();
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -29,9 +28,7 @@ public class CartDAO {
 			while (rs.next()) {
 				String id = rs.getString("product_id");
 				String name = rs.getString("name");
-				int categoryId = rs.getInt("category_id");
-				String categoryName = rs.getString("category_name");
-				Category category = new Category(categoryId, categoryName);
+				String category = rs.getString("category_name");
 				double price = rs.getDouble("price");
 				int orderLevel = rs.getInt("order_level");
 				int view = rs.getInt("view");
@@ -126,7 +123,7 @@ public class CartDAO {
 	
 	public ProductInCart getProductInCart(String customerId, String productId) {
 		ProductInCart data = null;
-		String sql = "select * , b.name [category_name], b.id [category_id] "
+		String sql = "select * , b.name [category_name] "
 				+ "from Cart c inner join Product p on c.product_id = p.id "
 				+ "inner join Category b on b.id = p.category_id "
 				+ "where customer_id = ? and product_id = ? ";
@@ -139,9 +136,7 @@ public class CartDAO {
 			if (rs.next()) {
 				String id = rs.getString("product_id");
 				String name = rs.getString("name");
-				int categoryId = rs.getInt("category_id");
-				String categoryName = rs.getString("category_name");
-				Category category = new Category(categoryId, categoryName);
+				String category = rs.getString("category_name");
 				double price = rs.getDouble("price");
 				int orderLevel = rs.getInt("order_level");
 				int view = rs.getInt("view");

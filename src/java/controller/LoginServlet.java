@@ -29,35 +29,25 @@ public class LoginServlet extends HttpServlet {
 			throws ServletException, IOException {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-		String rememberMe = request.getParameter("remember-me");
 		CustomerDAO customerAccess = new CustomerDAO();
 		password = customerAccess.getMd5(password);
 		Customer user = customerAccess.getAccount(username, password);
-		if(user == null){
+		if (user == null) {
 			HttpSession session = request.getSession(true);
 			session.setAttribute("error", "Sai tên đăng nhập hoặc mật khẩu");
 			response.sendRedirect("login");
 		} else {
-			if(rememberMe != null){
-				Cookie usernameCookie = new Cookie("username", username);
-				Cookie passwordCookie = new Cookie("password", password);
-				// life = 20 min
-				usernameCookie.setMaxAge(24 * 60 * 60);
-				passwordCookie.setMaxAge(24 * 60 * 60);
-				response.addCookie(usernameCookie);
-				response.addCookie(passwordCookie);
+			if (user.getRoleId() == 1) {
+				HttpSession session = request.getSession(true);
+				session.setAttribute("admin", user);
+				response.sendRedirect("admin-display-product");
 			} else {
-				Cookie usernameCookie = new Cookie("username", username);
-				Cookie passwordCookie = new Cookie("password", password);
-				usernameCookie.setMaxAge(0);
-				passwordCookie.setMaxAge(0);
-				response.addCookie(usernameCookie);
-				response.addCookie(passwordCookie);
+				HttpSession session = request.getSession(true);
+				session.setAttribute("user", user);
+				response.sendRedirect("home");
 			}
 
-			HttpSession session = request.getSession(true);
-			session.setAttribute("user", user);
-			response.sendRedirect("home");
+
 		}
 	}
 

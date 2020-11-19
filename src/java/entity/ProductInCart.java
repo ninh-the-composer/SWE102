@@ -10,7 +10,7 @@ public class ProductInCart extends Product {
 	public ProductInCart() {
 	}
 
-	public ProductInCart(int quantity, String id, String name, Category category, double price, int view, int orderLevel, double discount, String description, String picture) {
+	public ProductInCart(int quantity, String id, String name, String category, double price, int view, int orderLevel, double discount, String description, String picture) {
 		super(id, name, category, price, view, orderLevel, discount, description, picture);
 		this.quantity = quantity;
 	}

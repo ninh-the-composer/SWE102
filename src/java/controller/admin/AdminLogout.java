@@ -1,23 +1,24 @@
-package controller;
+package controller.admin;
 
 import entity.Customer;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import model.CustomerDAO;
 
 /**
  *
  * @author Ninh
  */
-public class RegisterServlet extends HttpServlet {
+@WebServlet(name = "AdminLogout", urlPatterns = {"/admin-logout"})
+public class AdminLogout extends HttpServlet {
 
 	/**
-	 * Processes requests for <code>POST</code> method.
+	 * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
 	 *
 	 * @param request servlet request
 	 * @param response servlet response
@@ -26,37 +27,12 @@ public class RegisterServlet extends HttpServlet {
 	 */
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		String name = request.getParameter("name");
-		String username = request.getParameter("username");
-		String password = request.getParameter("password");
-		String email = request.getParameter("email");
-		String city = request.getParameter("city");
-		String address = request.getParameter("address");
-		String phone = request.getParameter("phone");
-		String picture = request.getParameter("picture");
-		CustomerDAO customerAccess = new CustomerDAO();
-		password = customerAccess.getMd5(password);
-		Customer c = new Customer("", name, username, password, address, city, phone, email, picture, 2);
-		String url;
-		// Validate data
-		String error="";
-		if (customerAccess.hasExistedUsername(username)) {
-			error += "Username \"" + username + "\" đã tồn tại, hãy thử bằng một username khác<br/>";
+		HttpSession session = request.getSession(true);
+		Customer customer = (Customer) session.getAttribute("admin");
+		if(customer != null){
+			session.removeAttribute("admin");
+			response.sendRedirect("login");
 		}
-		if (customerAccess.hasExistedEmail(email)) {
-			error += "Email \"" + email + "\" đã tồn tại, hãy thử bằng một email khác<br/>";
-		} 
-		
-		if (error.isEmpty()) {
-			customerAccess.addCustomer(c);
-			url = "login";
-		} else {
-			HttpSession session = request.getSession(true);
-			session.setAttribute("error", error);
-			url = "register";
-		}
-		response.sendRedirect(url);
 	}
 
 	// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -71,8 +47,7 @@ public class RegisterServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		//register.jsp
-		request.getRequestDispatcher("register.jsp").forward(request, response);
+		processRequest(request, response);
 	}
 
 	/**
