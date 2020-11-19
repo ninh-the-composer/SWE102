@@ -3,7 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/D:/Semester4-FA20/SWE102/SWE102/src/java/controller/AddToCartServlet.java</file>
+            <file>file:/D:/Semester4-FA20/SWE102/SWE102/src/java/model/OrderDAO.java</file>
+            <file>file:/D:/Semester4-FA20/SWE102/SWE102/web/shop.jsp</file>
+            <file>file:/D:/Semester4-FA20/SWE102/SWE102/web/product-detail.jsp</file>
+            <file>file:/D:/Semester4-FA20/SWE102/SWE102/web/index.jsp</file>
+            <file>file:/D:/Semester4-FA20/SWE102/SWE102/src/java/controller/CheckoutServlet.java</file>
             <file>file:/D:/Semester4-FA20/SWE102/SWE102/web/cart.jsp</file>
+            <file>file:/D:/Semester4-FA20/SWE102/SWE102/src/java/model/CartDAO.java</file>
+            <file>file:/D:/Semester4-FA20/SWE102/SWE102/src/java/controller/CartServlet.java</file>
+            <file>file:/D:/Semester4-FA20/SWE102/SWE102/web/silde-cart.jsp</file>
         </group>
     </open-files>
 </project-private>
