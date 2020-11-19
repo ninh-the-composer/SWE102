@@ -27,7 +27,7 @@ public class Product {
 		this.orderLevel = orderLevel;
 		this.discount = discount;
 		this.description = description;
-		this.picture = "assets/products/"+category+picture;
+		this.picture = picture;
 	}
 
 	public int getView() {
@@ -63,7 +63,7 @@ public class Product {
 	}
 
 	public String getPicture() {
-		return picture;
+		return "assets/products/"+category+picture;
 	}
 
 	public String getDescription() {

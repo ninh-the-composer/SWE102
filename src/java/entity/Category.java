@@ -5,18 +5,18 @@ package entity;
  * @author Ninh
  */
 public class Category {
-	private String id;
+	private int id;
 	private String name;
 
 	public Category() {
 	}
 
-	public Category(String id, String name) {
+	public Category(int id, String name) {
 		this.id = id;
 		this.name = name;
 	}
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 

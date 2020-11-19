@@ -21,7 +21,7 @@ public class CategoryDAO {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()){
-				String id = rs.getString("id");
+				int id = rs.getInt("id");
 				String name = rs.getString("name");
 				Category b = new Category(id, name);
 				list.add(b);

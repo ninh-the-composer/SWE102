@@ -29,7 +29,7 @@ public class CartDAO {
 			while (rs.next()) {
 				String id = rs.getString("product_id");
 				String name = rs.getString("name");
-				String categoryId = rs.getString("category_id");
+				int categoryId = rs.getInt("category_id");
 				String categoryName = rs.getString("category_name");
 				Category category = new Category(categoryId, categoryName);
 				double price = rs.getDouble("price");
@@ -139,7 +139,7 @@ public class CartDAO {
 			if (rs.next()) {
 				String id = rs.getString("product_id");
 				String name = rs.getString("name");
-				String categoryId = rs.getString("category_id");
+				int categoryId = rs.getInt("category_id");
 				String categoryName = rs.getString("category_name");
 				Category category = new Category(categoryId, categoryName);
 				double price = rs.getDouble("price");

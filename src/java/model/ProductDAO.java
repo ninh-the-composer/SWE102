@@ -81,7 +81,7 @@ public class ProductDAO {
 			if (rs.next()) {
 				String productId = rs.getString("id");
 				String name = rs.getString("name");
-				String categoryId = rs.getString("category_id");
+				int categoryId = rs.getInt("category_id");
 				String categoryName = rs.getString("category_name");
 				Category category = new Category(categoryId, categoryName);
 				double price = rs.getDouble("price");
@@ -144,8 +144,9 @@ public class ProductDAO {
 			while (rs.next()) {
 				String id = rs.getString("id");
 				String name = rs.getString("name");
+				int category_id = rs.getInt("category_id");
 				String categoryName = rs.getString("category_name");
-				Category category = new Category(categoryId, categoryName);
+				Category category = new Category(category_id, categoryName);
 				double price = rs.getDouble("price");
 				int orderLevel = rs.getInt("order_level");
 				int view = rs.getInt("view");
@@ -184,7 +185,7 @@ public class ProductDAO {
 			while(rs.next()){
 				String id = rs.getString("id");
 				String name = rs.getString("name");
-				String categoryId = rs.getString("category_id");
+				int categoryId = rs.getInt("category_id");
 				String categoryName = rs.getString("category_name");
 				Category category = new Category(categoryId, categoryName);
 				double price = rs.getDouble("price");
@@ -201,24 +202,9 @@ public class ProductDAO {
 		return list;
 	}
 	
-//	public boolean addProduct(Product p){
-//		String sql = "insert into Product values('Test Drink', 3, 14000, 0, 'UONG NHU LOZ', '/drink14/pepsi_m.png', 0,0)";
-//		int r = 0;
-//		try {
-//			Connection con = dbc.getConnection();
-//			PreparedStatement ps = con.prepareStatement(sql);
-//			ps.setString(1, p.getName());
-//			r = ps.executeUpdate();
-//		} catch (Exception e) {
-//			System.out.println("Bug in ProductDAO");
-//			e.printStackTrace();
-//		}
-//		return r != 0;
-//	}
 	
 	public static void main(String[] args) {
 		ProductDAO dao = new ProductDAO();
-		System.out.println(dao.searchByKeyword("s", 1, 9, ""));
 	}
 
 }
