@@ -59,10 +59,9 @@
 
         <section id="posts">
             <div class="container">
-
-                <a href="admin-add-product" class="btn btn-dark btn-lg my-5" role="button" aria-pressed="true">Add new product</a>
-                <a href="admin-display-orders" class="btn btn-dark btn-lg my-5" role="button" aria-pressed="true">View Orders</a>
-
+                
+                <a href="admin-display-product" class="btn btn-dark btn-lg my-5" role="button" aria-pressed="true">Back</a>
+                
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
@@ -72,32 +71,33 @@
                             <table class="table table-striped">
                                 <thead class="thead-dark">
                                     <tr>
-                                        <th>Name</th>
-                                        <th>Category ID</th>
-                                        <th>Price</th>
-                                        <th>Description</th>
-                                        <th>Update</th>
-                                        <th>Delete</th>
+                                        <th>ID</th>
+                                        <th>Customer ID</th>
+                                        <th>City</th>
+                                        <th>Address</th>
+                                        <th>Phone</th>
+                                        <th>Email</th>
+                                        <th>Note</th>
+                                        <th>Total</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <c:forEach items="${requestScope.lsProduct}" var="p" >
+                                    <c:forEach items="${requestScope.orders}" var="o" >
                                         <tr>
-                                            <td>${p.name}</td>
-                                            <td>${p.category}</td>
-                                            <td><fmt:formatNumber value="${p.price}"  type="number" pattern="###,###,### VND"/></td>
-											<td>${p.description}</td> 
-                                            <!-- update and delete -->
-                                            <td>
-                                                <a href="admin-update-product?id=${p.id}" class="btn btn-secondary">
-                                                    <i class="fas fa-angle-double-right"></i> Update
-                                                </a>
-                                            </td>
-                                            <td>
-                                                <a href="admin-delete-product?id=${p.id}" class="btn btn-secondary">
+                                            <td>#${o.id}</td>
+                                            <td>${o.customerId}</td>
+                                            <td>${o.city}</td>
+                                            <td>${o.address}</td>
+                                            <td>${o.phone}</td>
+                                            <td>${o.email}</td>
+                                            <td>${o.note}</td>
+                                            <td><fmt:formatNumber value="${o.totalValue}"  type="number" pattern="###,###,### VND"/></td>
+                                            <!-- Approach Order -->
+<!--                                            <td>
+                                                <a href="admin-display-product?id=${p.id}" class="btn btn-secondary">
                                                     <i class="fas fa-angle-double-right"></i> Delete
                                                 </a>
-                                            </td>
+                                            </td>-->
                                         </tr>
                                     </c:forEach>
                                 </tbody>
@@ -112,15 +112,14 @@
             <!-- PAGINATION -->
             <nav class="ml-4">
                 <ul class="pagination justify-content-center">
-                    <c:forEach items="${requestScope.lsPage}" var="page">
-                        <li class="page-item">
-                            <a class="page-link" href="admin-display-product?page=${page}">${page}</a>
-                        </li>
-                    </c:forEach>
+					<c:forEach var="page" items="${pages}">
+						<li class="page-item">
+                            <a class="page-link" href="admin-display-orders?page=${page}">${page}</a>
+						</li>
+					</c:forEach>
                 </ul>
             </nav>
         </div>
-
 
 
         <!-- FOOTER PART -->

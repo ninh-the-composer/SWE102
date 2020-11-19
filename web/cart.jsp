@@ -148,7 +148,7 @@
 										</td>
 										<td class="name-pr">
 											<a href="product?id=${product.id}">
-												${product}
+												${product.name}
 											</a>
 										</td>
 										<td class="price-pr">
@@ -174,26 +174,6 @@
 				<div class="row my-5 " >
 					<div class="col-lg-6 col-sm-6"></div>
 					<div class="col-lg-6 col-sm-6">
-						<div class="coupon-box">
-							<div class="input-group input-group-sm">
-								<input onchange="applyVoucher(this)" style="text-transform:uppercase" class="form-control" placeholder="Nhập mã giảm giá" aria-label="Coupon code" type="text">
-								
-								<script>
-									function applyVoucher(tag){
-										let voucher = tag.value;
-										if(voucher.toUpperCase() !== "ANHTTV20"){
-											document.getElementById("error").innerHTML="Voucher không tồn tại!";
-											tag.style.borderColor = "red";
-											tag.value = "";
-											return;
-										}
-										document.getElementById("error").innerHTML="";
-										tag.style.borderColor = "green";
-									}
-								</script>
-							</div>
-						</div>
-						<p id="error"></p>
 					</div>
 				</div>
 				<div class="row my-5">

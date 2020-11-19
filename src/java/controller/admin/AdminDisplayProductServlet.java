@@ -25,7 +25,6 @@ public class AdminDisplayProductServlet extends HttpServlet {
 				response.sendRedirect("login");
 				return;
 			}
-			System.out.println(request.getSession().getAttribute("user"));
 			String pageStr = request.getParameter("page");
 			int page = 1;
 
@@ -35,7 +34,7 @@ public class AdminDisplayProductServlet extends HttpServlet {
 
             AdminProductDAO apd = new AdminProductDAO();
 
-            int numberProduct = 8;
+				int numberProduct = 8;
             int totalProduct = apd.countTotalProduct();
             int totalPage = (totalProduct % numberProduct == 0) ? totalProduct / numberProduct : totalProduct / numberProduct + 1;
 

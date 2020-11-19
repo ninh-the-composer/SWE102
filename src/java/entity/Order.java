@@ -17,6 +17,7 @@ public class Order {
 	private String email;
 	private String note;
 	private double totalValue;
+	boolean hasProcessed;
 //	List<ProductInCart> list = new ArrayList<>();
 
 	public Order() {
@@ -32,6 +33,18 @@ public class Order {
 		this.email = email;
 		this.note = note;
 		this.totalValue = totalValue;
+	}
+
+	public boolean hasProcessed() {
+		return hasProcessed;
+	}
+
+	public void setProcessed(boolean hasProcessed) {
+		this.hasProcessed = hasProcessed;
+	}
+
+	public double getTotalValue() {
+		return totalValue;
 	}
 
 	
