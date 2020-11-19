@@ -15,7 +15,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="css/bootstrap.min.css">
-        <title>Adm display product</title>
+        <title>List Orders</title>
     </head>
     <body>
         <!-- start navbar -->
